@@ -1270,3 +1270,18 @@ Storage files: (filename : modification date - size)
 2016-04-06 16:29:23.500+0000 INFO  [o.n.k.i.t.l.p.LogPruningImpl] Log Rotation [0]:  Starting log pruning.
 2016-04-06 16:29:23.508+0000 INFO  [o.n.k.i.t.l.p.LogPruningImpl] Log Rotation [0]:  Log pruning complete.
 2016-04-06 17:19:05.672+0000 WARN  [o.n.k.i.c.MonitorGc] GC Monitor: Application threads blocked for 293ms.
+2016-04-06 20:41:07.514+0000 WARN  [o.n.k.i.c.MonitorGc] GC Monitor: Application threads blocked for 10798397ms.
+2016-04-06 23:35:24.702+0000 WARN  [o.n.k.i.c.MonitorGc] GC Monitor: Application threads blocked for 24224ms.
+2016-04-06 23:35:44.432+0000 INFO  [o.n.k.i.f.GraphDatabaseFacade] Shutdown started
+2016-04-06 23:35:44.447+0000 INFO  [o.n.k.i.f.CommunityFacadeFactory] Database is now unavailable
+2016-04-06 23:35:44.734+0000 INFO  [o.n.k.i.t.l.c.CheckPointerImpl] Check Pointing triggered by database shutdown [21]:  Starting check pointing...
+2016-04-06 23:35:44.742+0000 INFO  [o.n.k.i.t.l.c.CheckPointerImpl] Check Pointing triggered by database shutdown [21]:  Starting store flush...
+2016-04-06 23:35:44.785+0000 INFO  [o.n.k.i.t.l.c.CheckPointerImpl] Check Pointing triggered by database shutdown [21]:  Store flush completed
+2016-04-06 23:35:44.800+0000 INFO  [o.n.k.i.t.l.c.CheckPointerImpl] Check Pointing triggered by database shutdown [21]:  Starting appending check point entry into the tx log...
+2016-04-06 23:35:44.857+0000 INFO  [o.n.k.i.t.l.c.CheckPointerImpl] Check Pointing triggered by database shutdown [21]:  Appending check point entry into the tx log completed
+2016-04-06 23:35:44.863+0000 INFO  [o.n.k.i.t.l.c.CheckPointerImpl] Check Pointing triggered by database shutdown [21]:  Check pointing completed
+2016-04-06 23:35:44.870+0000 INFO  [o.n.k.i.t.l.p.LogPruningImpl] Log Rotation [0]:  Starting log pruning.
+2016-04-06 23:35:44.878+0000 INFO  [o.n.k.i.t.l.p.LogPruningImpl] Log Rotation [0]:  Log pruning complete.
+2016-04-06 23:35:47.191+0000 INFO  [o.n.k.NeoStoreDataSource] NeoStores closed
+2016-04-06 23:35:47.199+0000 INFO  [o.n.k.i.DiagnosticsManager] --- STOPPING diagnostics START ---
+2016-04-06 23:35:47.199+0000 INFO  [o.n.k.i.DiagnosticsManager] --- STOPPING diagnostics END ---
