@@ -5,13 +5,17 @@
 For my project I have to design a neo4j graph database for the constituencies in the Republic of Ireland, the candidates that ran in those constituencies and create a relationship between them.
 
 ## Database
-For this database I planned to create nodes for each Constituency, Candidate, and Party. I began by creating the 40 constituencies in Ireland. Each constituency has properties for the name, population, the number of seats, and a short description. The line below is an example of how I created a single node(constituency) with labels and properties in order to make it unique.
+For this database I planned to create nodes for each Constituency, Candidate, and Party. I began by creating the 40 constituencies in Ireland. Each constituency has properties for the name, population, the number of seats, and a short description. The line below is an example of how I created a single node(Constituency) with labels and properties in order to make it unique.
 ```
-create (`nCarlow–Kilkenny`:Constituency {name:"Carlow–Kilkenny", population:145659, seats:5, description:"The county of Kilkenny and the county of Carlow, except the part thereof which is comprised in the constituency of Wicklow."})
+CREATE (`nCarlow–Kilkenny`:Constituency {name:"Carlow–Kilkenny", population:145659, seats:5, description:"The county of Kilkenny and the county of Carlow, except the part thereof which is comprised in the constituency of Wicklow."});
 ```
-I then added the Candidates to the database in order of the constituency they are from. Again like the constituencies, the candidates have properties for their name, party, gender, constituency, age, and if they were elected or not. The line below is an example of how I created a single node(candidate) with labels and properties in order to make it unique.
+I then added the Candidates to the database in order of the constituency they are from. Again like the constituencies, the candidates have properties for their name, party, gender, constituency, age, and if they were elected or not. The line below is an example of how I created a single node(Candidate) with labels and properties in order to make it unique.
 ```
-Create (`nJohn Paul Phelan`:Candidates {name:"John Paul Phelan", party:"Fine Gael", gender:"Male", constituency:"Carlow-Kilkenny", age:37, elected:"Yes"}),
+CREATE (`nJohn Paul Phelan`:Candidates {name:"John Paul Phelan", party:"Fine Gael", gender:"Male", constituency:"Carlow-Kilkenny", age:37, elected:"Yes"});
+```
+I then added the Parties to the database. Again like the other two, the parties have properties for their name, leader, candidates, elected, colour. The line below is an example of how I created a single node(Party) with labels and properties in order to make it unique.
+```
+CREATE (`nFine Gael`:Party {name:"Fine Gael", candidates:88, elected:49, leader:"Enda Kenny", colour:"Blue"});
 ```
 
 ## Queries
