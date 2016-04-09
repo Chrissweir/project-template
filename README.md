@@ -60,3 +60,4 @@ RETURN
 
 ## References
 1. [Neo4J website](http://neo4j.com/), the website of the Neo4j database.
+2. [Youtube Input Tutorial](https://www.youtube.com/watch?v=LTdOgvpsR3c), a Youtube Tutorial using Excel to import cypher queries. 
