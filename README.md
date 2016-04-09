@@ -42,11 +42,10 @@ RETURN
 
 #### Query two title
 This query retreives the Bacon number of an actor...
-```cypher
-MATCH
-	(Bacon)
-RETURN
-	Bacon;
+```
+MATCH (n:Candidates)-[:MEMBER_OF]->(p:Party) 
+WHERE n.elected = "Yes" and n.gender="Female"
+RETURN p, count(*) AS c ORDER BY c DESC LIMIT 1;
 ```
 
 #### Query three title
@@ -60,4 +59,9 @@ RETURN
 
 ## References
 1. [Neo4J website](http://neo4j.com/), the website of the Neo4j database.
-2. [Youtube Input Tutorial](https://www.youtube.com/watch?v=LTdOgvpsR3c), a Youtube Tutorial using Excel to import cypher queries. 
+2. [Youtube Input Tutorial](https://www.youtube.com/watch?v=LTdOgvpsR3c), a Youtube Tutorial using Excel to import cypher queries.
+3. [Wikipedia website - Irish Constituencies](https://en.wikipedia.org/wiki/Parliamentary_constituencies_in_the_Republic_of_Ireland), Parliamentary constituencies in the Republic of Ireland.
+4. [TheJournal website - Candidates](http://www.thejournal.ie/election-2016/constituency/), the website with information on all the candidates running.
+5. [Wikipedia website - Irish Parties](https://en.wikipedia.org/wiki/List_of_political_parties_in_the_Republic_of_Ireland), the website with information on all Irish Parties in government.
+6. [Wikipedia website - Irish Parties](https://en.wikipedia.org/wiki/Irish_general_election,_2016), more information the Irish Parties in government.
+7. Other Students-**Gareth Lynskey**,**Patrick Griffin**,**Keith Langan**, discussed and shared some interesting queries to use.
