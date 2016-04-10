@@ -28,11 +28,12 @@ MATCH (n{party:"Fine Gael"}), (d{name:"Fine Gael"})
 CREATE (n)-[r:MEMBER_OF]->(d) return n,d
 ```
 ## Queries
-Summarise your three queries here.
-Then explain them one by one in the following sections.
+1.Find the Constituency of the youngest elected member of Fianna Fail.
+2.Find the top 5 parties with the greatest number of candidates. 
+3.Find all females from the Labour Party that were not elected and what constituency they were from.
 
-#### Query one title
-This query retreives the Constituency of the youngest elected member of Fianna Fail
+#### Query one - Constituency of the youngest elected member of Fianna Fail.
+This query retreives the Constituency of the youngest elected member of the Fianna Fail Party by checking if the member was elected, that they are from the Fianna Fail Party, and that their age is not equal to null. The query then returns the Constituency of these members but is ordered by finding the minimum age of the results and outputs them with a limit of 1.
 ```
 MATCH (n:Candidates)-[FROM]->(c:Constituency),(n:Candidates)-[MEMBER_OF]->(p:Party)
 WHERE n.elected = "Yes" AND p.name="Fianna Fail" AND n.age<>"null"
@@ -40,16 +41,16 @@ RETURN c, MIN(n.age) AS n
 ORDER BY n ASC LIMIT 1;
 ```
 
-#### Query two title
-This query retreives the top 5 parties with the geatest number of candidates
+#### Query two - Top 5 parties in order of candidate size.
+This query retreives the top 5 parties with the greatest number of candidates by sorting all the parties in order of size and outputs the top 5 results.
 ```
 MATCH (p:Party)
 RETURN p, size((p)<-[:MEMBER_OF]-()) as c
 ORDER BY c DESC LIMIT 5
 ```
 
-#### Query three title
-All females from the Labour Party that were not elected and what constituency they were from.
+#### Query three - All non-elected females from the Labour Party and what constituency they were from.
+This query finds all females from the Labour Party that were not elected and what constituency they were from by checking if they were first elected or not, from the Labour Party, and female. The Constituency, Party, and Name of the members is outputted as the result.
 ```
 MATCH (n:Candidates)-[MEMBER_OF]->(p:Party),(n:Candidates)-[FROM]->(d:Constituency)
 WHERE n.elected = "No" AND p.name="Labour Party" and n.gender="Female" 
