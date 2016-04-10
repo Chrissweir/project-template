@@ -7,7 +7,7 @@ For my project I have to design a neo4j graph database for the constituencies in
 ## Database
 For this database I planned to create nodes for each Constituency, Candidate, and Party. I began by creating the 40 constituencies in Ireland. Each constituency has properties for the name, population, the number of seats, and a short description. The line below is an example of how I created a single node(Constituency) with labels and properties in order to make it unique.
 ```
-CREATE (`nClare`:Constituency {name:"Clare", population:111336, seats:4, description:"The county of Clare, except the part thereof which is comprised in the constituency of Limerick City."}),
+CREATE (`nClare`:Constituency {name:"Clare", population:111336, seats:4, description:"The county of Clare, except the part thereof which is comprised in the constituency of Limerick City."});
 ```
 I then added the Candidates to the database in order of the constituency they are from. Again like the constituencies, the candidates have properties for their name, party, gender, constituency, age, and if they were elected or not. The line below is an example of how I created a single node(Candidate) with labels and properties in order to make it unique.
 ```
@@ -20,12 +20,12 @@ CREATE (`nFine Gael`:Party {name:"Fine Gael", candidates:88, elected:49, leader:
 Once I had these three sets of nodes created I started to create their relationships to each other. I matched the constituencies to the candidates by searching through all the nodes for the constituency property, and then I searched for the name property in all the nodes. I then created the relationship under the label FROM. Below is an example of I created this.
 ```
 MATCH (n{constituency:"Clare"}), (d{name:"Clare"}) 
-CREATE (n)-[r:FROM]->(d) return n,d
+CREATE (n)-[r:FROM]->(d) RETURN n,d;
 ```
 I then began to create the relationship for the Parties to each of the Candidates. I matched the parties to the candidates by searching through all the nodes for the party property, and then I searched for the name property in all the nodes. I then created the relationship under the label MEMBER_OF. Below is an example of I created this.
 ```
 MATCH (n{party:"Fine Gael"}), (d{name:"Fine Gael"}) 
-CREATE (n)-[r:MEMBER_OF]->(d) return n,d
+CREATE (n)-[r:MEMBER_OF]->(d) RETURN n,d;
 ```
 ## Queries
 1.Find the Constituency of the youngest elected member of Fianna Fail.
@@ -45,16 +45,16 @@ ORDER BY n ASC LIMIT 1;
 This query retreives the top 5 parties with the greatest number of candidates by sorting all the parties in order of size and outputs the top 5 results.
 ```
 MATCH (p:Party)
-RETURN p, size((p)<-[:MEMBER_OF]-()) as c
-ORDER BY c DESC LIMIT 5
+RETURN p, size((p)<-[:MEMBER_OF]-()) AS c
+ORDER BY c DESC LIMIT 5;
 ```
 
 #### Query three - All non-elected females from the Labour Party and what constituency they were from.
 This query finds all females from the Labour Party that were not elected and what constituency they were from by checking if they were first elected or not, from the Labour Party, and female. The Constituency, Party, and Name of the members is outputted as the result.
 ```
 MATCH (n:Candidates)-[MEMBER_OF]->(p:Party),(n:Candidates)-[FROM]->(d:Constituency)
-WHERE n.elected = "No" AND p.name="Labour Party" and n.gender="Female" 
-RETURN n,d,p
+WHERE n.elected = "No" AND p.name="Labour Party" AND n.gender="Female" 
+RETURN n,d,p;
 ```
 
 ## References
