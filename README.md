@@ -32,29 +32,28 @@ Summarise your three queries here.
 Then explain them one by one in the following sections.
 
 #### Query one title
-This query retreives the Bacon number of an actor...
-```cypher
-MATCH
-	(Bacon)
-RETURN
-	Bacon;
+This query retreives the Constituency of the youngest elected member of Fianna Fail
+```
+MATCH (n:Candidates)-[FROM]->(c:Constituency),(n:Candidates)-[MEMBER_OF]->(p:Party)
+WHERE n.elected = "Yes" AND p.name="Fianna Fail" AND n.age<>"null"
+RETURN c, MIN(n.age) AS n
+ORDER BY n ASC LIMIT 1;
 ```
 
 #### Query two title
-This query retreives the Bacon number of an actor...
+This query retreives the top 5 parties with the geatest number of candidates
 ```
-MATCH (n:Candidates)-[:MEMBER_OF]->(p:Party) 
-WHERE n.elected = "Yes" and n.gender="Female"
-RETURN p, count(*) AS c ORDER BY c DESC LIMIT 1;
+MATCH (p:Party)
+RETURN p, size((p)<-[:MEMBER_OF]-()) as c
+ORDER BY c DESC LIMIT 5
 ```
 
 #### Query three title
-This query retreives the Bacon number of an actor...
-```cypher
-MATCH
-	(Bacon)
-RETURN
-	Bacon;
+All females from the Labour Party that were not elected and what constituency they were from.
+```
+MATCH (n:Candidates)-[MEMBER_OF]->(p:Party),(n:Candidates)-[FROM]->(d:Constituency)
+WHERE n.elected = "No" AND p.name="Labour Party" and n.gender="Female" 
+RETURN n,d,p
 ```
 
 ## References
